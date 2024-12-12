@@ -1,0 +1,213 @@
+<!--<form action="/profile" method="post" enctype="multipart/form-data">
+    <input type="file" name="avatar">
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Ecommerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero {
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.featured-dishes {
+    padding: 40px;
+    text-align: center;
+}
+
+.featured-dishes h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.dish {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.dish img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.dish h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dish p {
+    font-size: 16px;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Restaurant Ecommerce</h1>
+            <p>Order delicious food online and have it delivered to your doorstep.</p>
+            <a href="#" class="btn">Order Now</a>
+        </div>
+    </section>
+    <section class="featured-dishes">
+        <h2>Featured Dishes</h2>
+        <div class="dish">
+            <img src="dish1.jpg" alt="Dish 1">
+            <h3>Dish 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="dish">
+            <img src="dish2.jpg" alt="Dish 2">
+            <h3>Dish 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="dish">
+            <img src="dish3.jpg" alt="Dish 3">
+            <h3>Dish 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2022 Restaurant Ecommerce. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Product</title>
+</head>
+<body>
+  <h1>Create Product</h1>
+  <form id="productForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="name">Product Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required><br><br>
+    
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required><br><br>
+    
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" required><br><br>
+    
+    <input type="submit" value="Create Product">
+  </form>
+
+  <script>
+    const form = document.getElementById("productForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("http://localhost:9000/api/product/createProduct", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          alert("Product created successfully!");
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+      } catch (error) {
+        alert("Error occurred while creating the product: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
