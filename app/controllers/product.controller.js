@@ -11,7 +11,8 @@ require('dotenv').config()
 //Firebase
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./erestau-1-firebase.json");
+var serviceAccount = require("../../erestau-1-firebase.json");
+// var serviceAccount = require("./erestau-1-firebase.json");
 const { collection } = require("../models/order.model");
 
 admin.initializeApp({
