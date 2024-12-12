@@ -6,7 +6,8 @@ const path = require("path");
 const multer = require("multer");
 const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
-const serviceAccount = require("./e-restou-alziron-firebase-adminsdk-37aq4-883e03d2e8.json");
+const serviceAccount = require("./e-restou-alziron-firebase-adminsdk-37aq4-324ba2051c.json");
+
 mongoose.set('strictQuery', false);
 const AWS = require('aws-sdk');
 require('dotenv').config();

@@ -3,11 +3,11 @@ const User = require("../models/user.model");
 const Product = require("../models/product.model");
 const admin = require('firebase-admin');
 const Token = require("../models/user-token");
-
-
-
-const serviceAccount = require('../../e-restou-alziron-firebase-adminsdk-37aq4-883e03d2e8.json');
 const { response } = require("express");
+
+
+
+var serviceAccount = require("../../e-restou-alziron-firebase-adminsdk-37aq4-324ba2051c.json");
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
